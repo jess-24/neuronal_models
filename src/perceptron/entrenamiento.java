@@ -1,10 +1,7 @@
 package perceptron;
 
 import java.util.ArrayList;
-//import java.util.Scanner;
 import General.patron;
-
-import javax.sound.midi.Soundbank;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -14,9 +11,7 @@ public class entrenamiento {
     double alfa_CoefAp;
     double fe;
     int fa_Sal_real,error;
-    //Scanner s;
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); //Ya tenemos el "lector"
-
     ArrayList<Double> pesos;
     ArrayList<Integer> errorArray;
     public entrenamiento(){

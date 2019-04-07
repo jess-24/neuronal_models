@@ -8,6 +8,7 @@ public class Main {
     Main(){
         System.out.println("****Elije un modelo***");
         System.out.println("1.Perceptron");
+        System.out.println("2.Hopfield");
         Scanner s = new Scanner(System.in);
         switch (s.nextInt()){
             case 1:
