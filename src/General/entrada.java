@@ -8,17 +8,31 @@ public class entrada {
     int patrones_k;
     ArrayList<patron> arrayPatrones_k;
     patron patron;
-    /*public void setNeuronas_x(int neuronas_x){
-        this.neuronas_x=neuronas_x;
-        patrones_k=(int)Math.pow(2,neuronas_x);
-    }*/
-    public int getPatrones_k(){
-        return patrones_k;
-    }
+
     //Definir patrones de General.entrada y salida
     Scanner s;
     public entrada(Scanner s){
         this.s=s;
+    }
+    public void definirPatronesE(){
+        //definir neuronas x por General.patron?
+        System.out.println("¿Número de neuronas por patrón?");
+        neuronas_x = s.nextInt();
+        arrayPatrones_k = new ArrayList<patron>();
+        do {//manejo de patrones k
+            patron = new patron();
+            for (int i = 1; i <= neuronas_x; i++) {
+                System.out.println("Valor de X" + i);
+                patron.setAgregaNeurona(s.nextInt());
+            }
+            arrayPatrones_k.add(patron);
+            System.out.println("Agregar otro patron? \n 1.Si\n 2.No");
+        }while (s.nextInt()==1);
+        for (int i=0; i<arrayPatrones_k.size(); i++){
+            System.out.println("Patron k"+(i+1)+": ");
+            for (int j = 0; j < neuronas_x; j++) {
+                System.out.print(arrayPatrones_k.get(i).getNeuronas().get(j)+" ");}
+        }
     }
     public void definirPatronesE_S(){
         //definir neuronas x por General.patron?
@@ -48,18 +62,5 @@ public class entrada {
     }
     public int getNeuronas_x(){
         return neuronas_x;
-    }
-    //Compuertas
-    public void compuertaAND(){
-
-    }
-    public void compuertaOR(){
-
-    }
-    public void compuertaNOT(){
-
-    }
-    public void compuertaXOR(){
-
     }
 }

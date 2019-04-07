@@ -105,12 +105,12 @@ public class entrenamiento {
             } else {
                 fa_Sal_real = 1;
             }
-            System.out.println(" ");
+            System.out.println(" -----------------------");
             for (int i=0; i<neuronas.size();i++){
                 System.out.print(+patronPrueba.get(i)+"  ");
             }
-            System.out.print("  "+fa_Sal_real);
-            System.out.println("\nProbar con otro patron? \n 1.Si\n 2.No");
+            System.out.print("  "+fa_Sal_real+"\n");
+            System.out.println(" -----------------------\nProbar con otro patron? \n 1.Si\n 2.No");
             try {
                 resp=Integer.parseInt(br.readLine());
             }catch (IOException ex){

@@ -14,14 +14,21 @@ public class Main {
             case 1:
                 modelo_Perceptron(s);
                 break;
+            case 2:modelo_Hopfield(s);
+                break;
         }
     }
     public void modelo_Perceptron(Scanner s){
         entrada=new entrada(s);
         entrada.definirPatronesE_S();
+        //Entrenamiento Perceptron
         entrenamiento=new entrenamiento();
         entrenamiento.aprendizaje(entrada.getNeuronas_x());
         entrenamiento.proceso(entrada.getArrayPatrones_k());
+    }
+    public void  modelo_Hopfield(Scanner s){
+        entrada=new entrada(s);
+        entrada.definirPatronesE();
     }
     public static void main(String[]args){
         Main obj=new Main();
