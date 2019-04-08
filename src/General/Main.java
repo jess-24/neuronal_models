@@ -45,6 +45,13 @@ public class Main {
                 System.out.println("Cumple con ortogonalidad minima del 50%");
                 //proceso
                 hopfield.matriz_PesosW(entrada.getNeuronas_x(),entrada.getArrayPatrones_k());
+                do {
+                    System.out.println("Aprendizaje completado . Listo para probar");
+                    entrada=new entrada(s);
+                    entrada.definirPatronesE();
+                    hopfield.probar(entrada.getArrayPatrones_k().get(0).getNeuronas());
+                    System.out.println("¿Probar con otro patrón?\n1.Si\n2.No");
+                }while (s.nextInt()==1);
             }else {
                 System.out.println("No cumple con ortogonalidad minima del 50%, cambiar patrones");
                 modelo_Hopfield(s);

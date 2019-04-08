@@ -7,7 +7,9 @@ public class entrenaHopfield {
     boolean exel_recu;
     double ortogonalidad;
     double[][] matriz_pesos;
+    int neuronas;
     public void fase_Recuperacion(int m_patrones,int neuronas_N){
+        neuronas=neuronas_N;
         System.out.println("****************");
         System.out.println("FASE DE RECUPERACIÓN");
         if (m_patrones <= (0.138*neuronas_N)){
@@ -41,10 +43,9 @@ public class entrenaHopfield {
         for (int i=0; i<neuronas;i++){//suma patrones
             for (int j=0; j<neuronas;j++){
                 if (i!=j) {
-                    for (int aux=0; aux<neuronas; aux++) {
-                        matriz_pesos[i][j] += patrones.get(p).getNeuronas().get(j) * patrones.get(p).getNeuronas().get(aux);
-
-                    }
+                    //for (int aux=0; aux<neuronas; aux++) {
+                    matriz_pesos[i][j] += patrones.get(p).getNeuronas().get(i) * patrones.get(p).getNeuronas().get(j);
+                    //}
                     System.out.print(matriz_pesos[i][j]+"  ");
                 }else{ matriz_pesos[i][j]=0;}
             }
@@ -56,5 +57,29 @@ public class entrenaHopfield {
             System.out.print(matriz_pesos[i][j]+"  ");}
             System.out.print("\n");
         }
+    }
+    public void probar(ArrayList<Integer> patronPrueba){
+        ArrayList<Integer> fe_psalida=new ArrayList<Integer>() ;
+        double aux;
+        System.out.println("\npe");
+        for (int i=0; i<neuronas; i++){
+            aux=0;
+            for (int j=0; j<neuronas; j++){
+                aux+=matriz_pesos[i][j]*patronPrueba.get(j);
+            }
+            System.out.print(" "+aux);
+            //someter a funcion de signo
+            if (aux < 0) {
+                fe_psalida.add(-1);
+            } else {
+                fe_psalida.add(1);
+            }
+        }
+        //salida
+        System.out.println("SALIDA\nP:");
+        for (int x=0;x<neuronas;x++){
+            System.out.print(" "+fe_psalida.get(x));
+        }
+        System.out.println("\n");
     }
 }
