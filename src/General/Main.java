@@ -3,6 +3,7 @@ package General;
 import java.util.Scanner;
 import perceptron.*;
 import hopfield.*;
+import mcculloch.*;
 
 import javax.sound.midi.Soundbank;
 
@@ -10,17 +11,44 @@ public class Main {
     entrada entrada;
     entrenamiento entrenamiento;
     entrenaHopfield hopfield;
+    entrenaMcCulloch mcculloch;
     Main(){
         System.out.println("****Elije un modelo***");
-        System.out.println("1.Perceptron");
-        System.out.println("2.Hopfield");
+        System.out.println("1.McCulloch y Pitts");
+        System.out.println("2.Perceptron");
+        System.out.println("3.Hopfield");
+        System.out.println("4.");
         Scanner s = new Scanner(System.in);
         switch (s.nextInt()){
-            case 1:
+            case 1: modelo_McCulochPitts(0);
+                break;
+            case 2:
                 modelo_Perceptron(s);
                 break;
-            case 2:modelo_Hopfield(s);
+            case 3:modelo_Hopfield(s);
                 break;
+        }
+    }
+    public void modelo_McCulochPitts(int aux){
+        Scanner s = new Scanner(System.in);
+        if (aux==0) {
+            entrada = new entrada(s);
+            entrada.definirPatronesE_S();
+            mcculloch = new entrenaMcCulloch();
+        }
+        mcculloch.valoreWyTeta(entrada.getNeuronas_x());
+        mcculloch.proceso(entrada.getArrayPatrones_k());
+        if (mcculloch.aprendizaje(entrada.getArrayPatrones_k())){
+            System.out.println("Aprendizaje exitoso");
+            do {
+                entrada=new entrada(s);
+                entrada.definirPatronesE();
+                mcculloch.prueba(entrada.getArrayPatrones_k());
+                System.out.println("Probar con otro patron?\n1.Si\n2.No");
+            }while (s.nextInt()==1);
+        }else {
+            System.out.println("Cambiando el valor de pesos y teta");
+            modelo_McCulochPitts(1);
         }
     }
     public void modelo_Perceptron(Scanner s){
