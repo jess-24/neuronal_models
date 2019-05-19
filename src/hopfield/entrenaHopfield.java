@@ -44,7 +44,7 @@ public class entrenaHopfield {
             for (int j=0; j<neuronas;j++){
                 if (i!=j) {
                     //for (int aux=0; aux<neuronas; aux++) {
-                    matriz_pesos[i][j] += patrones.get(p).getNeuronas().get(i) * patrones.get(p).getNeuronas().get(j);
+                        matriz_pesos[i][j] += patrones.get(p).getNeuronas().get(i) * patrones.get(p).getNeuronas().get(j);
                     //}
                     System.out.print(matriz_pesos[i][j]+"  ");
                 }else{ matriz_pesos[i][j]=0;}

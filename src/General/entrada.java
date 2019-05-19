@@ -29,7 +29,7 @@ public class entrada {
             System.out.println("Agregar otro patron? \n 1.Si\n 2.No");
         }while (s.nextInt()==1);
         for (int i=0; i<arrayPatrones_k.size(); i++){
-            System.out.println("Patron k"+(i+1)+": ");
+            System.out.println("\nPatron k"+(i+1)+": ");
             for (int j = 0; j < neuronas_x; j++) {
                 System.out.print(arrayPatrones_k.get(i).getNeuronas().get(j)+" ");}
         }

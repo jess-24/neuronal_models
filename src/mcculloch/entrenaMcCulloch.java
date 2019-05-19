@@ -51,13 +51,14 @@ public class entrenaMcCulloch {
         double salida;
         for (int i=0; i<patronPrueba.size();i++){
             salida=0;
+            System.out.println("\n");
             for (int j=0; j< patronPrueba.get(i).getNeuronas().size();j++){
-                System.out.print(patronPrueba.get(i).getNeuronas().get(j)+" ");
+                System.out.print("  "+patronPrueba.get(i).getNeuronas().get(j));
                 salida+=patronPrueba.get(i).getNeuronas().get(j)*pesos.get(j);
+                if (salida>=teta){
+                    System.out.print("  1");
+                }else{System.out.print("  0");}
             }
-            if (salida>=teta){
-                System.out.print("1");
-            }else{System.out.print("0");}
         }
     }
 }

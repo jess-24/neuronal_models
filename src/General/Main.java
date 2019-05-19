@@ -39,15 +39,15 @@ public class Main {
         mcculloch.valoreWyTeta(entrada.getNeuronas_x());
         mcculloch.proceso(entrada.getArrayPatrones_k());
         if (mcculloch.aprendizaje(entrada.getArrayPatrones_k())){
-            System.out.println("Aprendizaje exitoso");
+            System.out.println("\n\nAprendizaje exitoso");
             do {
                 entrada=new entrada(s);
                 entrada.definirPatronesE();
                 mcculloch.prueba(entrada.getArrayPatrones_k());
-                System.out.println("Probar con otro patron?\n1.Si\n2.No");
+                System.out.println("\n\nProbar con otro patron?\n1.Si\n2.No");
             }while (s.nextInt()==1);
         }else {
-            System.out.println("Cambiando el valor de pesos y teta");
+            System.out.println("\nCambiando el valor de pesos y teta");
             modelo_McCulochPitts(1);
         }
     }
